@@ -324,14 +324,11 @@ func are_shapes_aligned() -> bool:
 	var normalized_upper = normalize_positions(upper)
 	var normalized_lower = normalize_positions(lower)
 
-	# Проверка на минимальный размер
-	if normalized_upper.size() < 2 or normalized_lower.size() < 2:
+	if normalized_upper.size() < half_size or normalized_lower.size() < half_size:
 		return false
 
-	# Проверка симметрии по горизонтальной оси
 	var horizontal_symmetry = normalized_upper == normalized_lower
 
-	# Проверка симметрии по вертикальной оси
 	var vertical_symmetry = true
 	var min_size = min(normalized_upper.size(), normalized_lower.size())
 	var remaining_cells = half_size - 1  # Оставшиеся клетки до half_size
